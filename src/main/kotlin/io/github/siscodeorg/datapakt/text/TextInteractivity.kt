@@ -1,9 +1,19 @@
 package io.github.siscodeorg.datapakt.text
 
 class TextClickAction {
-    // TODO: An action to run when the text is clicked, see Raw JSON text format
+    var action: ClickAction? = null
+    var value: String? = null
 }
 
 class TextHoverAction {
-    // TODO: A thing to show when the text is hovered over, see Raw JSON text format
+    var action: HoverAction? = null
+    var text: PlainTextComponent? = null
+    var item: String? = null //TODO: SNBT for ItemStack
+    var entity: String? = null //TODO : SNBT for Entity
+}
+enum class ClickAction {
+    openUrl,openFile,runCommand,suggestCommand,changePage,copyToClipboard
+}
+enum class HoverAction {
+    showText,showItem,showEntity
 }
