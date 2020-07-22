@@ -32,7 +32,7 @@ class ScoreTextComponent(
 ) : TextComponent()
 
 class EntitySelectorTextComponent(
-    selector: String // TODO: Add a class for an entity selector (EntitySelector)
+    val selector: String // TODO: Add a class for an entity selector (EntitySelector)
 ) : TextComponent()
 
 class KeybindTextComponent(
