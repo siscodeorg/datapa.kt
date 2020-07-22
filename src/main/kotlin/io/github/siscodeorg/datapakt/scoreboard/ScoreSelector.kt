@@ -1,5 +1,7 @@
 package io.github.siscodeorg.datapakt.scoreboard
 
-class ScoreSelector {
-    // TODO: Raw JSON text component selector for the 'score' content class, see Raw JSON text format
-}
+class ScoreSelector(
+    var name: String,
+    var objective: String,
+    var value: String? = null
+) {}
