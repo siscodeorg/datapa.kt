@@ -2,10 +2,6 @@ package io.github.siscodeorg.datapakt.text
 
 import com.beust.klaxon.Json
 
-class TextClickAction {
-    var action: ClickAction? = null
-    var value: String? = null
-}
 
 sealed class TextHoverAction(
     @Json(index = 1)
@@ -59,7 +55,3 @@ class EntityHoverAction(
     contents = ShowEntityContents(ShowEntityInfo(type, id, name))
 )
 
-
-enum class ClickAction {
-    openUrl,openFile,runCommand,suggestCommand,changePage,copyToClipboard
-}
