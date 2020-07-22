@@ -1,11 +1,8 @@
 package io.github.siscodeorg.datapakt.text
 
-import com.beust.klaxon.Json
 
 sealed class TextClickAction (
-    @Json(index = 1)
     val action: String,
-    @Json(index = 2)
     val value: String
 ){}
 

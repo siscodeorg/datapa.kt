@@ -1,11 +1,7 @@
 package io.github.siscodeorg.datapakt.text
 
-import com.beust.klaxon.Json
-
 sealed class TextHoverAction(
-    @Json(index = 1)
     val action: String,
-    @Json(index = 2)
     val contents: Any
 ) { }
 
