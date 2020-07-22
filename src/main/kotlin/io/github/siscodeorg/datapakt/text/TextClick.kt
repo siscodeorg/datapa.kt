@@ -6,13 +6,13 @@ sealed class TextClickAction (
     val value: String
 ){}
 
-class OpenUrlTextClickAction(val url: String)
+class OpenUrlClickAction(val url: String)
     : TextClickAction("open_url", value = url)
-class RunCommandTextClickAction(val command: String)
+class RunCommandClickAction(val command: String)
     : TextClickAction("run_command", value = command)
-class SuggestCommandTextClickAction(val command: String)
+class SuggestCommandClickAction(val command: String)
     : TextClickAction("suggest_command", value = command)
-class ChangePageTextClickAction(val page: String)
+class ChangePageClickAction(val page: String)
     : TextClickAction("change_page", value = page)
-class CopyToClipboardTextClickAction(val text: String)
+class CopyToClipboardClickAction(val text: String)
     : TextClickAction("copy_to_clipboard", value = text)
