@@ -24,7 +24,7 @@ class PlainTextComponent(
 
 class TranslatedTextComponent(
     var translate: String,
-    var with: MutableList<TextComponent> = mutableListOf()
+    var with: MutableList<TextComponent>? = null
 ) : TextComponent()
 
 class ScoreTextComponent(
