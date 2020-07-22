@@ -13,9 +13,9 @@ sealed class TextComponent(
 
     var extra: MutableList<TextComponent>? = null,
 
-    val insertion: String? = null,  // Insert this text into the chat bar when shift-clicked
-    val clickEvent: TextClickAction? = null,
-    val hoverEvent: TextHoverAction? = null
+    var insertion: String? = null,  // Insert this text into the chat bar when shift-clicked
+    var clickEvent: TextClickAction? = null,
+    var hoverEvent: TextHoverAction? = null
 )
 
 class PlainTextComponent(
