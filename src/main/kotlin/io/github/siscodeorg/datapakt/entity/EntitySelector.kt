@@ -4,10 +4,16 @@ enum class SelectorType {
     NEAREST_PLAYER,RANDOM_PLAYER,ALL_PLAYERS,ALL_ENTITIES,ENTITY_EXECUTING_COMMAND
 }
 
-class EntitySelector {
-    var type: SelectorType? = null
-    var arguments: List<SelectorArgument>? = null
+class EntitySelector (var type: SelectorType, var args : List<SelectorArgument>)
+{
+    constructor(type: SelectorType, vararg args: SelectorArgument) : this(type, args.asList())
 }
+
+fun nearestPlayerSelector(vararg args : SelectorArgument) : EntitySelector  =
+    EntitySelector(type = SelectorType.NEAREST_PLAYER, args = *args)
+
+fun nearestPlayerSelector(args: List<SelectorArgument>) : EntitySelector =
+    EntitySelector(type = SelectorType.NEAREST_PLAYER, args = args)
 
 sealed class SelectorArgument {
     abstract fun serialize(): String
