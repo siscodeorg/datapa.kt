@@ -60,8 +60,12 @@ class VolumeDimensionArgument (var dx : String, var dy: String, var dz: String) 
     override fun serialize(): String { return "dx=${dx},dy=${dy},dz=${dz}" }
 }
 
-//TODO: Implement Scores Argument
-//class ScoresArgument : SelectorArgument() { //scores={Score1=12,Score2=12..33}
-//
-//}
+class ScoresArgument (var scores : List<Score>) : SelectorArgument () {
+    constructor(vararg scores : Score) : this(scores.asList())
 
+    override fun serialize(): String {
+        return "scores={${scores.joinToString(","){"${it.objective}=${it.value}"}}}"
+    }
+}
+
+data class Score (var objective: String, var value : String)
