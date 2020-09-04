@@ -178,3 +178,18 @@ fun survivalSelector() : GamemodeArgument =
 
 fun notSurvivalSelector() : GamemodeArgument =
     GamemodeArgument(Gamemode.SURVIVAL, false)
+
+class EntityNameArgument(var name: String, var flag: Boolean) : SelectorArgument() {
+    override fun serialize(): String {
+        return when(flag){
+            true -> "name=${name}"
+            false -> "name=!${name}"
+        }
+    }
+}
+
+fun withNameSelector(name : String) : EntityNameArgument =
+    EntityNameArgument(name,true)
+
+fun withoutNameSelector(name : String) : EntityNameArgument =
+    EntityNameArgument(name, false)
