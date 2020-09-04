@@ -33,6 +33,12 @@ fun allEntitiesSelector(vararg args: SelectorArgument) : EntitySelector =
 fun allEntitiesSelector(args: List<SelectorArgument>) : EntitySelector =
     EntitySelector(type = SelectorType.ALL_ENTITIES, args = args)
 
+fun entityExecutingCommandSelector(vararg args: SelectorArgument) : EntitySelector =
+    EntitySelector(type = SelectorType.ENTITY_EXECUTING_COMMAND, args = *args)
+
+fun entityExecutingCommandSelector(args: List<SelectorArgument>) : EntitySelector =
+    EntitySelector(type = SelectorType.ENTITY_EXECUTING_COMMAND, args = args)
+
 sealed class SelectorArgument {
     abstract fun serialize(): String
 }
