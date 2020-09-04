@@ -200,3 +200,10 @@ class VerticalRotationArgument(var value : String) : SelectorArgument() {
         return "x_rotation=${value}"
     }
 }
+
+//Yet another int/range argument
+class HorizontalRotationArgument(var value : String) : SelectorArgument() {
+    override fun serialize(): String {
+        return "y_rotation=${value}"
+    }
+}
