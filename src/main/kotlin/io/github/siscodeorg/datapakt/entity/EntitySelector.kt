@@ -27,6 +27,12 @@ fun allPlayersSelector(vararg args: SelectorArgument) : EntitySelector =
 fun allPlayersSelector(args: List<SelectorArgument>) : EntitySelector =
     EntitySelector(type = SelectorType.ALL_PLAYERS, args = args)
 
+fun allEntitiesSelector(vararg args: SelectorArgument) : EntitySelector =
+    EntitySelector(type = SelectorType.ALL_ENTITIES, args = *args)
+
+fun allEntitiesSelector(args: List<SelectorArgument>) : EntitySelector =
+    EntitySelector(type = SelectorType.ALL_ENTITIES, args = args)
+
 sealed class SelectorArgument {
     abstract fun serialize(): String
 }
