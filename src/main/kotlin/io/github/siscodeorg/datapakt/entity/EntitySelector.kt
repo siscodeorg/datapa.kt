@@ -97,3 +97,35 @@ fun inTeamSelector(name : String) =
 
 fun notInTeamSelector(name: String) = 
     TeamArgument(TeamType.NOT_IN_TEAM, name)
+
+enum class SortingType {
+    NEAREST,FURTHEST,RANDOM,ARBITRARY,NO_SORT
+}
+
+class LimitArgument(var limit: Int,var type: SortingType) : SelectorArgument() {
+    constructor(limit: Int) : this(limit,SortingType.NO_SORT)
+    override fun serialize(): String {
+        return when (type){
+            SortingType.NEAREST -> "limit=${limit},sort=nearest"
+            SortingType.FURTHEST -> "limit=${limit},sort=furthest"
+            SortingType.RANDOM -> "limit=${limit},sort=random"
+            SortingType.ARBITRARY -> "limit=${limit},sort=arbitrary"
+            SortingType.NO_SORT -> "limit=${limit}"
+        }
+    }
+}
+
+fun nearestLimitSelector(limit: Int) : LimitArgument =
+    LimitArgument(limit,SortingType.NEAREST)
+
+fun furthestLimitSelector(limit: Int) : LimitArgument =
+    LimitArgument(limit,SortingType.FURTHEST)
+
+fun randomLimitSelector(limit: Int) : LimitArgument =
+    LimitArgument(limit,SortingType.RANDOM)
+
+fun arbitraryLimitSelector(limit: Int) : LimitArgument =
+    LimitArgument(limit,SortingType.ARBITRARY)
+
+fun limitSelector(limit: Int) : LimitArgument =
+    LimitArgument(limit)
