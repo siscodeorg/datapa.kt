@@ -15,6 +15,12 @@ fun nearestPlayerSelector(vararg args : SelectorArgument) : EntitySelector  =
 fun nearestPlayerSelector(args: List<SelectorArgument>) : EntitySelector =
     EntitySelector(type = SelectorType.NEAREST_PLAYER, args = args)
 
+fun randomPlayerSelector(vararg args: SelectorArgument) : EntitySelector =
+    EntitySelector(type = SelectorType.RANDOM_PLAYER, args = *args)
+
+fun randomPlayerSelector(args: List<SelectorArgument>) : EntitySelector =
+    EntitySelector(type = SelectorType.RANDOM_PLAYER, args = args)
+
 sealed class SelectorArgument {
     abstract fun serialize(): String
 }
