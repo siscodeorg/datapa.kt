@@ -129,3 +129,10 @@ fun arbitraryLimitSelector(limit: Int) : LimitArgument =
 
 fun limitSelector(limit: Int) : LimitArgument =
     LimitArgument(limit)
+
+//Another one which is either an int or an range.
+class LevelArgument (var value : String) : SelectorArgument(){
+    override fun serialize(): String {
+        return "level=${value}"
+    }
+}
