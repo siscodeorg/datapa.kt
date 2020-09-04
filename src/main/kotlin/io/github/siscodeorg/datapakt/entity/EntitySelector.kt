@@ -193,3 +193,10 @@ fun withNameSelector(name : String) : EntityNameArgument =
 
 fun withoutNameSelector(name : String) : EntityNameArgument =
     EntityNameArgument(name, false)
+
+//Yet another int/range argument
+class VerticalRotationArgument(var value : String) : SelectorArgument() {
+    override fun serialize(): String {
+        return "x_rotation=${value}"
+    }
+}
