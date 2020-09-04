@@ -16,10 +16,10 @@ class EntitySelectorSerializer : JsonSerializer<EntitySelector> {
             SelectorType.ENTITY_EXECUTING_COMMAND -> "@s"
             null -> throw UnsupportedOperationException("Invalid/Not initialized Selector Type")
         }
-        return if(src.arguments?.isEmpty()!!) JsonPrimitive(currentSelector)
+        return if(src.args.isEmpty()) JsonPrimitive(currentSelector)
         else {
-            var serializedArgs = src.arguments?.map { it.serialize() }
-            JsonPrimitive(currentSelector+serializedArgs?.joinToString (",","[","]"))
+            val serializedArgs = src.args.map { it.serialize() }
+            JsonPrimitive(currentSelector+serializedArgs.joinToString (",","[","]"))
         }
     }
 }
