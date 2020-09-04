@@ -207,3 +207,18 @@ class HorizontalRotationArgument(var value : String) : SelectorArgument() {
         return "y_rotation=${value}"
     }
 }
+
+class EntityTypeArgument(var type: String, var flag : Boolean) : SelectorArgument() {
+    override fun serialize(): String {
+        return when (flag){
+            true -> "type=${type}"
+            false -> "type=!${type}"
+        }
+    }
+}
+
+fun withTypeSelector(type : String) : EntityTypeArgument =
+    EntityTypeArgument(type, true)
+
+fun withoutTypeSelector(type : String) : EntityTypeArgument =
+    EntityTypeArgument(type, false)
