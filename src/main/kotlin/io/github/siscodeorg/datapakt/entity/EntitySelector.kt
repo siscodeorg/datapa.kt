@@ -69,3 +69,31 @@ class ScoresArgument (var scores : List<Score>) : SelectorArgument () {
 }
 
 data class Score (var objective: String, var value : String)
+
+enum class TeamType {
+    TEAMLESS,HAS_TEAM, NOT_IN_TEAM, IN_TEAM
+}
+
+class TeamArgument (var type : TeamType ,var team : String) : SelectorArgument() {
+    constructor(type: TeamType) : this(type, "")
+    override fun serialize(): String {
+        return when(type) {
+            TeamType.TEAMLESS -> "team="
+            TeamType.HAS_TEAM -> "team=!"
+            TeamType.NOT_IN_TEAM -> "team=!${team}"
+            TeamType.IN_TEAM -> "team=${team}"
+        }
+    }
+}
+
+fun teamlessSelector() : TeamArgument =
+    TeamArgument(TeamType.TEAMLESS)
+
+fun hasTeamSelector() : TeamArgument =
+    TeamArgument(TeamType.HAS_TEAM)
+
+fun inTeamSelector(name : String) =
+    TeamArgument(TeamType.IN_TEAM, name)
+
+fun notInTeamSelector(name: String) = 
+    TeamArgument(TeamType.NOT_IN_TEAM, name)
