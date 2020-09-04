@@ -136,3 +136,45 @@ class LevelArgument (var value : String) : SelectorArgument(){
         return "level=${value}"
     }
 }
+
+enum class Gamemode {
+    SPECTATOR,ADVENTURE,CREATIVE,SURVIVAL
+}
+
+class GamemodeArgument(var gamemode: Gamemode, var flag : Boolean) : SelectorArgument(){
+    override fun serialize(): String {
+        var current = "gamemode"
+        current += if(!flag) "=!" else "="
+
+        return when(gamemode){
+            Gamemode.SPECTATOR -> "${current}spectator"
+            Gamemode.ADVENTURE -> "${current}adventure"
+            Gamemode.CREATIVE -> "${current}creative"
+            Gamemode.SURVIVAL -> "${current}survival"
+        }
+    }
+}
+
+fun spectatorSelector() : GamemodeArgument =
+    GamemodeArgument(Gamemode.SPECTATOR, true)
+
+fun notSpectatorSelector() : GamemodeArgument =
+    GamemodeArgument(Gamemode.SPECTATOR, false)
+
+fun adventureSelector() : GamemodeArgument =
+    GamemodeArgument(Gamemode.ADVENTURE, true)
+
+fun notAdventureSelector() : GamemodeArgument =
+    GamemodeArgument(Gamemode.ADVENTURE, false)
+
+fun creativeSelector() : GamemodeArgument =
+    GamemodeArgument(Gamemode.CREATIVE, true)
+
+fun notCreativeSelector() : GamemodeArgument =
+    GamemodeArgument(Gamemode.CREATIVE, false)
+
+fun survivalSelector() : GamemodeArgument =
+    GamemodeArgument(Gamemode.SURVIVAL, true)
+
+fun notSurvivalSelector() : GamemodeArgument =
+    GamemodeArgument(Gamemode.SURVIVAL, false)
